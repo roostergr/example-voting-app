@@ -39,7 +39,7 @@ pipeline {
           steps{
             echo 'Packaging vote app with docker'
             script{
-              docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
+              docker.withRegistry('https://index.docker.io/v1/', 'roostergr') {
                   def voteImage = docker.build("roostergr/vote:v${env.BUILD_ID}", "./vote")
                   voteImage.push()
                   voteImage.push("dev")
